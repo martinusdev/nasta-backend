@@ -1,13 +1,16 @@
 require 'net/http'
 require 'json'
+require 'time'
+require 'aws-record'
+require "aws-sdk-resources"
+
 
 def newrelic_request()
   # todo date frame
-  # todo app ID
-  # todo api key
+  # todo app ID - ENV['NR_APP_ID_xxx_name']?
   uri = URI('https://api.newrelic.com/v2/applications/todo/metrics/data.json?names[]=WebTransaction&names[]=Errors%2Fall&from=2020-03-09T00:00Z&to=2020-03-09T11:49Z')
   req = Net::HTTP::Get.new(uri)
-  req.add_field 'X-Api-Key', 'todo'
+  req.add_field 'X-Api-Key', ENV['NR_API_KEY']
 
   res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
     http.request(req)
@@ -32,23 +35,56 @@ def newrelic()
   transactions = json['metric_data']['metrics'][0]['timeslices']
   errors = json['metric_data']['metrics'][1]['timeslices']
 
-  errors_cunt = {}
-  errors.each { |d| errors_cunt[d['from']] = d['values']['error_count'] }
+  errors_count = {}
+  errors.each { |d| errors_count[d['from']] = d['values']['error_count'] }
 
   data = []
 
   transactions.each do |d|
     calls = d['values']['call_count']
-    errors = errors_cunt[d['from']]
+    errors = errors_count[d['from']]
     data.append([
-                    d['from'],
-                    calls,
-                    errors,
-                    errors / calls,
+                    Time.parse(d['from']).to_i,
+                    (errors / calls.to_f * 1000).to_f
                 ])
   end
-
   data
 end
 
-puts newrelic
+class Reports
+  include Aws::Record
+  string_attr :name
+  integer_attr :timestamp
+  float_attr :value
+end
+
+def write(name, data)
+
+  dynamodb = Aws::DynamoDB::Client.new
+  table_name = 'Reports'
+
+  data.each do |d|
+    item = {
+        Name: name,
+        Timestamp: d[0],
+        Value: d[1]
+    }
+
+    params = {
+        table_name: table_name,
+        item: item
+    }
+    begin
+      dynamodb.put_item(params)
+      puts "Added item  #{d[0]}"
+
+    rescue Aws::DynamoDB::Errors::ServiceError => error
+      puts "Unable to add item:"
+      puts "#{error.message}"
+    end
+  end
+end
+
+data = newrelic
+
+puts write('nr_error_rate_test', data)
