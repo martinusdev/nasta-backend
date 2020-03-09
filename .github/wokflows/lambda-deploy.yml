@@ -16,3 +16,4 @@ jobs:
           aws_region: eu-central-1
           function_name: Nasta-s-helloworld
           source: hello_world.rb
+          dry_run: true
