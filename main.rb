@@ -19,5 +19,5 @@ def schedule
   scheduler.schedule
 end
 
-test
-#schedule
+#test
+schedule

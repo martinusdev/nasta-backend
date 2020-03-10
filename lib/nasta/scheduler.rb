@@ -20,14 +20,15 @@ class Scheduler
       puts report_name
       puts report
       items.append({
-                       message_group_id: report_name, #todo correct value
-                       id: report_name, #todo correct value
+                       message_group_id: (Digest::SHA2.hexdigest report_name), #todo correct value
+                       id: (Digest::SHA2.hexdigest report_name), #todo correct value
                        message_body: {report: report_name}.to_s, #todo correct value
                    })
     }
 
     sqs_push items
     puts 'scheduled'
+    puts items
   end
 
   def sqs_push (items)
