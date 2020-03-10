@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'time'
 require 'aws-record'
-require "aws-sdk-resources"
+require 'aws-sdk-resources'
 
 
 def newrelic_request()
@@ -79,12 +79,16 @@ def write(name, data)
       puts "Added item  #{d[0]}"
 
     rescue Aws::DynamoDB::Errors::ServiceError => error
-      puts "Unable to add item:"
+      puts 'Unable to add item:'
       puts "#{error.message}"
     end
   end
 end
 
-data = newrelic
+def lambda_handler(event:, context:)
+  data = newrelic
 
-puts write('nr_error_rate_test', data)
+  puts write('nr_error_rate_lambda', data)
+  { statusCode: 200, body: JSON.generate('Data written') }
+end
+
