@@ -49,7 +49,4 @@ class NewRelicErrorRateMartinus
     end
     data
   end
-
-
-
 end
