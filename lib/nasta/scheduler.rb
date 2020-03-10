@@ -10,11 +10,7 @@ class Scheduler
     reports = read_reports
     # todo - frequency
 
-    items = [{
-                 message_group_id: 'test2',
-                 id: 'test2',
-                 message_body: {'this': 'should_fail'}.to_s,
-             }]
+    items = []
     reports.each_key { |report_name|
       report = reports[report_name]
       puts report_name
@@ -22,7 +18,7 @@ class Scheduler
       items.append({
                        message_group_id: (Digest::SHA2.hexdigest report_name), #todo correct value
                        id: (Digest::SHA2.hexdigest report_name), #todo correct value
-                       message_body: {report: report_name}.to_s, #todo correct value
+                       message_body: report_name,
                    })
     }
 

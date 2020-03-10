@@ -5,7 +5,9 @@ require 'logger'
 require 'nasta/model/reports'
 
 def lambda_handler(event:, context:)
-  report_name = event['report']
+  raise 'Not implemented for multiple entries' unless event['Records'].count == 1
+
+  report_name = event['Records'][0]['body']
 
   raise 'No report was specified' if report_name.nil?
 

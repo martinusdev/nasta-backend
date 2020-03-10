@@ -1,10 +1,4 @@
 {
-    "Dummy::SuccessReport": {
-        "frequency": "daily"
-    },
-    "Dummy::ErrorReport": {
-        "frequency": "daily"
-    },
     "NewRelic::ErrorRateMartinus": {
         "frequency": "daily"
     }
