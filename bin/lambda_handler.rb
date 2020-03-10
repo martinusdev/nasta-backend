@@ -3,9 +3,19 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 require 'nasta/reports'
 require 'logger'
 require 'nasta/model/reports'
+require 'lib/nasta/scheduler'
 
 def lambda_handler(event:, context:)
   puts event
+
+  if event['Records']
+    run_report event
+  else
+    schedule
+  end
+end
+
+def run_report(event)
 
   raise 'Not implemented for multiple entries' unless event['Records'].count == 1
 
@@ -26,10 +36,15 @@ def lambda_handler(event:, context:)
     reports = Reports.new
     reports.write(data)
     puts 'written'
-    { statusCode: 200, body: '' }
+    {statusCode: 200, body: ''}
   rescue StandardError => e
     logger = Logger.new $stderr
     logger.error e.full_message
     raise e
   end
+end
+
+def schedule
+  scheduler = Scheduler.new
+  scheduler.schedule
 end
