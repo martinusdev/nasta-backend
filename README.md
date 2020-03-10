@@ -39,7 +39,7 @@ In case of Error you need to throw `StandardError` or its subclass, Lambda retur
 Jednorázový setup:
 ```bash
 cd nasta-backend
-chomd +x bin/build-zip
+chmod +x bin/build-zip
 ```
 
 Vytvorenie zip:
