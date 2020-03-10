@@ -10,8 +10,10 @@ def lambda_handler(event:, context:)
 
   if event['Records']
     run_report event
+  elsif event['frequency']
+    schedule event['frequency']
   else
-    schedule
+    raise 'unknown method'
   end
 end
 
@@ -44,7 +46,7 @@ def run_report(event)
   end
 end
 
-def schedule
+def schedule(frequency)
   scheduler = Scheduler.new
-  scheduler.schedule
+  scheduler.schedule frequency
 end

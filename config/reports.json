@@ -1,5 +1,5 @@
 {
     "NewRelic::ErrorRateMartinus": {
-        "frequency": "daily"
+        "frequency": "5minutes"
     }
 }

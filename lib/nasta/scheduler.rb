@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'aws-sdk-resources'
 
 class Scheduler
@@ -6,21 +7,21 @@ class Scheduler
     JSON.parse(file)
   end
 
-  def schedule
+  def schedule(frequency)
     reports = read_reports
-    # todo - frequency
-
     items = []
-    reports.each_key { |report_name|
+    reports.each_key do |report_name|
       report = reports[report_name]
+      next unless report['frequency'] == frequency
+
       puts report_name
       puts report
       items.append({
-                       message_group_id: (Digest::SHA2.hexdigest report_name), #todo correct value
-                       id: (Digest::SHA2.hexdigest report_name), #todo correct value
-                       message_body: report_name,
+                       message_group_id: (Digest::SHA2.hexdigest report_name), #TODO: correct value
+                       id: (Digest::SHA2.hexdigest report_name), #TODO: correct value
+                       message_body: report_name
                    })
-    }
+    end
 
     sqs_push items
     puts 'scheduled'
