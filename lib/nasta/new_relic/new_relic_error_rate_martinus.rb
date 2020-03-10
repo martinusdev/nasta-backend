@@ -2,8 +2,6 @@
 require 'net/http'
 require 'json'
 require 'time'
-require 'aws-record'
-require 'aws-sdk-resources'
 
 class NewRelicErrorRateMartinus
   def newrelic_request
