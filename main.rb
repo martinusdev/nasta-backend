@@ -3,6 +3,7 @@ $LOAD_PATH << './lib'
 require 'dotenv/load'
 require 'nasta/new_relic/new_relic_error_rate_martinus'
 require 'nasta/model/reports'
+require 'nasta/scheduler'
 
 def test
   report = NewRelicErrorRateMartinus.new
@@ -13,4 +14,10 @@ def test
   db.write('nr_error_rate_multi', data)
 end
 
-test
+def schedule
+  scheduler = Scheduler.new
+  scheduler.schedule
+end
+
+#test
+schedule

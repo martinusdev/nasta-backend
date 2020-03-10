@@ -6,7 +6,7 @@ require 'logger'
 def lambda_handler(event:, context:)
   report_name = event['report']
 
-  return { statusCode: 400, body: "No report was specified" } if report_name.nil?
+  raise 'No report was specified' if report_name.nil?
 
   begin
     class_name = Object.const_get(report_name)
