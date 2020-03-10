@@ -6,12 +6,12 @@ require 'logger'
 def lambda_handler(event:, context:)
   report_name = event['report']
 
-  return { statusCode: 400, body: "No report was specified" } if report_name.nil?
+  raise 'No report was specified' if report_name.nil?
 
   begin
     class_name = Object.const_get(report_name)
   rescue NameError => e
-    return { statusCode: 404, body: "Report #{report_name} not found" }
+    raise "Report #{report_name} not found"
   end
 
   begin
@@ -21,6 +21,6 @@ def lambda_handler(event:, context:)
   rescue StandardError => e
     logger = Logger.new $stderr
     logger.error e.full_message
-    { statusCode: 500, body: "Failed to fetch data for report #{report_name}" }
+    raise e
   end
 end
