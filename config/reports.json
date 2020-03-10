@@ -1,5 +1,11 @@
 {
-    "example_report_name": {
+    "Dummy::SuccessReport": {
+        "frequency": "daily"
+    },
+    "Dummy::ErrorReport": {
+        "frequency": "daily"
+    },
+    "NewRelic::ErrorRateMartinus": {
         "frequency": "daily"
     }
 }
