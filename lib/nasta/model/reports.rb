@@ -1,16 +1,16 @@
 require 'aws-sdk-resources'
 
 class Reports
-  def write(name, data)
+  def write(data)
 
     @@dynamodb = Aws::DynamoDB::Client.new
 
     items = []
     data.each do |d|
       item = {
-          "report_name": name,
-          "report_time": d[0],
-          "report_value": d[1]
+          "report_name": d[0],
+          "report_time": d[1],
+          "report_value": d[2]
       }
 
       items.append({"put_request": {"item": item}})

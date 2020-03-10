@@ -20,7 +20,7 @@ def lambda_handler(event:, context:)
     data = report.fetch
     puts 'fetched'
     reports = Reports.new
-    reports.write(report_name, data)
+    reports.write(data)
     puts 'written'
     { statusCode: 200, body: '' }
   rescue StandardError => e

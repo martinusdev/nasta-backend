@@ -11,7 +11,7 @@ def test
   data = report.fetch
   puts data
   db = Reports.new
-  db.write('nr_error_rate_current', data)
+  db.write(data)
 end
 
 def schedule

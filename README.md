@@ -33,13 +33,14 @@ In case of Error you need to throw `StandardError` or its subclass, Lambda retur
 
 #### Return values
 
-fetch should return array of `[timestamp, value]`, eg. 
+fetch should return array of `[name, timestamp, value]`, eg.
 
 ```ruby
 [
-    [1583848560, 0.2],
-    [1583848500, 0.3]
-    [1583848440, 0.34]
+    ['error_rate_martinus', 1583848560, 0.2],
+    ['error_rate_martinus', 1583848500, 0.32],
+    ['error_rate_other', 1583848560, 0.01],
+    ['error_rate_other', 1583848500, 0.04]
 ]
 ```
 
