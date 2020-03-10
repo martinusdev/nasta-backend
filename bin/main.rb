@@ -4,9 +4,12 @@ require 'nasta/new_relic/new_relic_error_rate_martinus'
 require 'nasta/model/reports'
 
 def test
-  data = NewRelicErrorRateMartinus.fetch
+  report = NewRelicErrorRateMartinus.new
+
+  data = report.fetch
   puts data
-    #Reports.write(data)
+  db = Reports.new
+  db.write('nr_error_rate_martinus', data)
 end
 
 test
