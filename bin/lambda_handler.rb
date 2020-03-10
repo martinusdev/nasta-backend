@@ -34,10 +34,8 @@ def run_report(event)
   begin
     report = class_name.new
     data = report.fetch
-    puts 'fetched'
     reports = Reports.new
     reports.write(data)
-    puts 'written'
     {statusCode: 200, body: ''}
   rescue StandardError => e
     logger = Logger.new $stderr

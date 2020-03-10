@@ -31,6 +31,7 @@ class Reports
   end
 
   def push(items)
+    puts "writing #{items.count} lines"
     @@dynamodb.batch_write_item({"request_items": {'Reports': items}})
   end
 end
