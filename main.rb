@@ -1,5 +1,6 @@
-$LOAD_PATH << 'lib'
+$LOAD_PATH << './lib'
 
+require 'dotenv/load'
 require 'nasta/new_relic/new_relic_error_rate_martinus'
 require 'nasta/model/reports'
 
