@@ -6,13 +6,11 @@ bundle config set path 'vendor/bundle'
 bundle install
 ```
 
-### ENV
-Setup this env variables:
+### ENV (Development)
+Copy .env.example to .env and change values inside file.
 
-* AWS_ACCESS_KEY_ID
-* AWS_SECRET_ACCESS_KEY
-* AWS_REGION = eu-central-1
-* NR_API_KEY
+### ENV (AWS)
+Setup variables from .env.example to AWS Lamda.
 
 ### Report classes
 
@@ -28,6 +26,6 @@ class SomeReport
 end
 ```
 
-V prípade chyby treba hodiť `StandardError` alebo jej podtriedu, lambda vráti chybovú odpoveď. 
+V prípade chyby treba hodiť `StandardError` alebo jej podtriedu, lambda vráti chybovú odpoveď.
 
 <small>[Understanding the Ruby Exception Hierarchy](https://www.honeybadger.io/blog/understanding-the-ruby-exception-hierarchy/)</small>
