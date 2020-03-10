@@ -8,8 +8,9 @@ require 'aws-sdk-resources'
 
 class PageSpeedScore
   def pagespeed_api_request(target_url)
-    # https://developers.google.com/speed/docs/insights/v5/reference/pagespeedapi/runpagespeed
-    api_key = ENV['GOOGLE_PAGESPEED_API_KEY'] #todo fix - missing
+    # Documentation: https://developers.google.com/speed/docs/insights/v5/reference/pagespeedapi/runpagespeed
+    # Generate API Keys: https://console.cloud.google.com/apis/credentials
+    api_key = ENV['GOOGLE_PAGESPEED_API_KEY']
     uri = URI('https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + target_url + '&key=' + api_key + '&strategy=mobile')
     req = Net::HTTP::Get.new(uri)
 
@@ -46,5 +47,3 @@ class PageSpeedScore
     data
   end
 end
-
-# PageSpeedScore.new.fetch
