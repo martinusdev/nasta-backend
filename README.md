@@ -26,6 +26,16 @@ class SomeReport
 end
 ```
 
+fetch should return array of `[timestamp, value]`, eg. 
+
+```ruby
+[
+    [1583848560, 0.2],
+    [1583848500, 0.3]
+    [1583848440, 0.34]
+]
+```
+
 In case of Error you need to throw `StandardError` or its subclass, Lambda returns error response.
 
 <small>[Understanding the Ruby Exception Hierarchy](https://www.honeybadger.io/blog/understanding-the-ruby-exception-hierarchy/)</small>
