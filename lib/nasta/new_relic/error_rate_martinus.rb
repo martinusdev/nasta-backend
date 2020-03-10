@@ -38,6 +38,7 @@ module NewRelic
         calls = d['values']['call_count']
         errors = errors_count[d['from']]
         data.append([
+                        'error_rate_martinus',
                         Time.parse(d['from']).to_i,
                         (errors / calls.to_f * 1000).to_f
                     ])
