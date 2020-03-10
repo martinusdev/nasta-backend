@@ -14,6 +14,7 @@ Setup variables from .env.example to AWS Lamda.
 
 ### Report classes
 
+#### Implement
 You need to implement following class:
 
 ```ruby
@@ -26,6 +27,12 @@ class SomeReport
 end
 ```
 
+In case of Error you need to throw `StandardError` or its subclass, Lambda returns error response.
+
+<small>[Understanding the Ruby Exception Hierarchy](https://www.honeybadger.io/blog/understanding-the-ruby-exception-hierarchy/)</small>
+
+#### Return values
+
 fetch should return array of `[timestamp, value]`, eg. 
 
 ```ruby
@@ -36,9 +43,11 @@ fetch should return array of `[timestamp, value]`, eg.
 ]
 ```
 
-In case of Error you need to throw `StandardError` or its subclass, Lambda returns error response.
+#### Run
 
-<small>[Understanding the Ruby Exception Hierarchy](https://www.honeybadger.io/blog/understanding-the-ruby-exception-hierarchy/)</small>
+Add your report to:
+- reports.rb
+- config/reports.json
 
 # Deploy
 1. zbaliť adresáre `bin/` a `lib/` do ZIP súboru
