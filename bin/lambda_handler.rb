@@ -2,6 +2,7 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 
 require 'nasta/reports'
 require 'logger'
+require 'nasta/model/reports'
 
 def lambda_handler(event:, context:)
   report_name = event['report']
@@ -16,7 +17,11 @@ def lambda_handler(event:, context:)
 
   begin
     report = class_name.new
-    report.fetch
+    data = report.fetch
+    puts 'fetched'
+    reports = Reports.new
+    reports.write(report_name, data)
+    puts 'written'
     { statusCode: 200, body: '' }
   rescue StandardError => e
     logger = Logger.new $stderr

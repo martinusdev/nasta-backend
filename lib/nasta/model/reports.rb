@@ -1,4 +1,3 @@
-require 'aws-record'
 require 'aws-sdk-resources'
 
 class Reports
