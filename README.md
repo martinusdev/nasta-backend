@@ -14,7 +14,7 @@ Setup variables from .env.example to AWS Lamda.
 
 ### Report classes
 
-Treba implementovať nasledujúcu triedu:
+You need to implement following class:
 
 ```ruby
 # lib/nasta/some_report.rb
@@ -26,6 +26,6 @@ class SomeReport
 end
 ```
 
-V prípade chyby treba hodiť `StandardError` alebo jej podtriedu, lambda vráti chybovú odpoveď.
+In case of Error you need to throw `StandardError` or its subclass, Lambda returns error response.
 
 <small>[Understanding the Ruby Exception Hierarchy](https://www.honeybadger.io/blog/understanding-the-ruby-exception-hierarchy/)</small>
