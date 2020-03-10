@@ -9,9 +9,9 @@ class Reports
 
     data.each do |d|
       item = {
-          Name: name,
-          Timestamp: d[0],
-          Value: d[1]
+          Report_name: name,
+          Report_time: d[0],
+          Report_value: d[1]
       }
 
       params = {
