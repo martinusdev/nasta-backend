@@ -10,7 +10,7 @@ def test
   data = report.fetch
   puts data
   db = Reports.new
-  db.write('nr_error_rate_martinus', data)
+  db.write('nr_error_rate_multi', data)
 end
 
 test
