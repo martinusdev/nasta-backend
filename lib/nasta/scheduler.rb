@@ -23,7 +23,7 @@ class Scheduler
                    })
     end
 
-    sqs_push items
+    sqs_push items unless items.count == 0
     puts 'scheduled'
     puts items
   end
