@@ -51,18 +51,18 @@ Add your report to:
 - config/reports.json
 
 # Deploy
-1. zbaliť adresáre `bin/` a `lib/` do ZIP súboru
-2. nahrať do AWS lambda cez web
+1. pack folders `bin/` and `lib/` to ZIP file
+2. upload to AWS lambda via web-browser
 
-**WINDOWS** - máte WSL? pustite to v ňom :)
+**WINDOWS** - do you have WSL? run in it :)
 
-Jednorázový setup:
+First-time setup:
 ```bash
 cd nasta-backend
 chmod +x bin/build-zip
 ```
 
-Vytvorenie zip:
+Creating zip:
 ```bash
 cd nasta-backend
 bin/build-zip
