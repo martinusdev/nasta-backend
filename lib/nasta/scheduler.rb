@@ -13,9 +13,6 @@ class Scheduler
     reports.each_key do |report_name|
       report = reports[report_name]
       next unless report['frequency'] == frequency
-
-      puts report_name
-      puts report
       items.append({
                        message_group_id: (Digest::SHA2.hexdigest report_name), #TODO: correct value
                        id: (Digest::SHA2.hexdigest report_name), #TODO: correct value
@@ -24,8 +21,6 @@ class Scheduler
     end
 
     sqs_push items unless items.count == 0
-    puts 'scheduled'
-    puts items
   end
 
   def sqs_push (items)
