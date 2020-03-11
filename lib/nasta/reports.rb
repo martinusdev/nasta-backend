@@ -10,7 +10,7 @@ require 'nasta/new_relic/fcp_detail'
 require 'nasta/report/google/pagespeed_category'
 require 'nasta/report/google/pagespeed_product'
 require 'nasta/github/test_count_report'
-# require 'nasta/report/google/spreadseheet_security_issues'
+require 'nasta/report/google/spreadseheet_security_issues'
 
 class Reports
   def self.create(name)
