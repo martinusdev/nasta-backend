@@ -8,6 +8,10 @@ gem 'aws-record', '~> 2.0'
 gem 'aws-sdk-resources', '~> 3.0'
 gem 'httparty', '~> 0.18'
 
+gem 'octokit', '~> 4.17'
+gem 'rubyzip', '~> 2.2'
+gem 'activesupport', '~> 6.0'
+
 group :test, :development do
   gem 'dotenv'
   gem 'rspec', '~> 3'
