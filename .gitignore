@@ -1,4 +1,5 @@
 /vendor/
+/build/
 /nasta-backend.zip
 /nasta-layer.zip
 

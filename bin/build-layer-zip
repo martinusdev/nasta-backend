@@ -1,0 +1,17 @@
+#!/bin/bash
+
+rm -rf build/ruby/
+
+bundle install --path build/ --without test development
+
+# I develop on Ruby 2.5
+# mv build/ruby/2.5.0 build/ruby/2.7.0
+
+mkdir build/ruby/gems
+rm -rf build/ruby/2.7.0/cache
+
+mv build/ruby/2.7.0 build/ruby/gems/2.7.0
+
+cd build/
+rm -f nasta-backend-layer.zip
+zip -q -r nasta-backend-layer.zip ruby/
