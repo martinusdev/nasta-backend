@@ -9,7 +9,7 @@ module NewRelic
     def fetch
       api = NewRelicInsights.new
       data = api.call 'SELECT percentile(duration, 99) FROM Transaction SINCE 5 minutes AGO WHERE name LIKE \'%.pda/%\''
-      [['response_time_pda', Time.now.to_i, data[0]['percentiles']['99']]]
+      [['response_time_pda', Time.now.to_i, data['results'][0]['percentiles']['99']]]
     end
   end
 end

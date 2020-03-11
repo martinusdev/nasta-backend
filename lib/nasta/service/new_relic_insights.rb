@@ -16,7 +16,7 @@ class NewRelicInsights
 
     case res
     when Net::HTTPSuccess
-      JSON.parse(res.body)['results']
+      JSON.parse(res.body)
     else
       raise res.body
     end

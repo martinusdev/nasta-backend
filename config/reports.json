@@ -13,5 +13,11 @@
     },
     "NewRelic::ResponseTimeObjEdit": {
         "frequency": "5minutes"
+    },
+    "NewRelic::FcpHomePage": {
+        "frequency": "daily"
+    },
+    "NewRelic::FcpDetail": {
+        "frequency": "daily"
     }
 }
