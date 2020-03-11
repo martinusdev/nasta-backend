@@ -18,30 +18,17 @@ def lambda_handler(event:, context:)
 end
 
 def run_report(event)
-
   raise 'Not implemented for multiple entries' unless event['Records'].count == 1
 
   report_name = event['Records'][0]['body']
-
   raise 'No report was specified' if report_name.nil?
 
-  begin
-    class_name = Object.const_get(report_name)
-  rescue NameError => e
-    raise "Report #{report_name} not found"
-  end
+  report = Reports.create(report_name)
 
-  begin
-    report = class_name.new
-    data = report.fetch
-    reports = Reports.new
-    reports.write(data)
-    {statusCode: 200, body: ''}
-  rescue StandardError => e
-    logger = Logger.new $stderr
-    logger.error e.full_message
-    raise e
-  end
+  reports = Reports.new
+  reports.write(report.fetch)
+
+  {statusCode: 200, body: ''}
 end
 
 def schedule(frequency)

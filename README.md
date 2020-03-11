@@ -44,6 +44,16 @@ fetch should return array of `[name, timestamp, value]`, eg.
 ]
 ```
 
+#### Debug reports
+
+Calling this command from the project dir:
+
+```bash
+ruby bin/execute.rb ReportClassName
+```
+
+will run the report and output its results to standard output.
+
 #### Run
 
 Add your report to:

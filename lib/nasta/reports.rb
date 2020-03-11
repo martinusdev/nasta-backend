@@ -10,4 +10,16 @@ require 'nasta/new_relic/fcp_detail'
 require 'nasta/report/google/pagespeed_category'
 require 'nasta/report/google/pagespeed_product'
 require 'nasta/report/google/spreadseheet_security_issues'
+# require 'nasta/github/test_count_report'
 
+class Reports
+  def self.create(name)
+    begin
+      class_name = Object.const_get(name)
+    rescue StandardError => e
+      raise "Report #{name} not found"
+    end
+
+    class_name.new
+  end
+end
