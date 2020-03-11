@@ -7,5 +7,17 @@
     },
     "NewRelic::ErrorRateBackgroundJobs": {
         "frequency": "5minutes"
+    },
+    "NewRelic::ResponseTimePda": {
+        "frequency": "5minutes"
+    },
+    "NewRelic::ResponseTimeObjEdit": {
+        "frequency": "5minutes"
+    },
+    "NewRelic::FcpHomePage": {
+        "frequency": "daily"
+    },
+    "NewRelic::FcpDetail": {
+        "frequency": "daily"
     }
 }
