@@ -19,5 +19,14 @@
     },
     "NewRelic::FcpDetail": {
         "frequency": "daily"
+    },
+    "Google::PageSpeedCategory": {
+        "frequency": "daily"
+    },
+    "Google::PageSpeedProduct": {
+        "frequency": "daily"
+    },
+    "Google::SpreadsheetSecurityIssues": {
+        "frequency": "daily"
     }
 }

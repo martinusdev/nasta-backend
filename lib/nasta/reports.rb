@@ -7,3 +7,7 @@ require 'nasta/new_relic/response_time_pda'
 require 'nasta/new_relic/response_time_obj_edit'
 require 'nasta/new_relic/fcp_home_page'
 require 'nasta/new_relic/fcp_detail'
+require 'nasta/report/google/pagespeed_category'
+require 'nasta/report/google/pagespeed_product'
+require 'nasta/report/google/spreadseheet_security_issues'
+
