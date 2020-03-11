@@ -18,6 +18,9 @@ jobs:
         steps:
             -   name: checkout source code
                 uses: actions/checkout@v1
+            -   uses: actions/setup-ruby@v1
+                with:
+                    ruby-version: '2.7'
             -   name: Bundle & ZIP
                 run: bin/vendor-zip
             -   name: AWS Lambda Layer Publish

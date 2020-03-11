@@ -4,4 +4,4 @@ bundle install --path vendor/bundle --deployment
 cd vendor/bundle
 mkdir ruby/gems
 mv ruby/2.7.0 ruby/gems/
-zip -r nasta-layer.zip ruby/gems/2.7.0/
+zip -r ../../nasta-layer.zip ruby/gems/2.7.0/
