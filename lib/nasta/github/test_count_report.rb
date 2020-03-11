@@ -67,11 +67,11 @@ module Github
     def unzip(archive)
       xml = nil
 
-      Zip::InputStream.open(StringIO.new(archive)) do |io|
-        entry = io.get_next_entry
+      Zip::File.open_buffer(StringIO.new(archive)) do |zip_file|
+        entry = zip_file.first
         raise "Artifact archive does not contain any files" if entry.nil?
         raise "Artifact archive expected contain only 1 file named testsuites.xml, file #{entry.name} found" if entry.name != "testsuites.xml"
-        xml = io.read
+        xml = entry.get_input_stream.read
       end
 
       xml
@@ -90,7 +90,7 @@ module Github
     private
 
     def assert_github_response(response, expected_key)
-      unless response.is_a?(Hash) && response.has_key?(expected_key)
+      unless response.key?(expected_key)
         raise "Github API returned malformed response: #{response.inspect[0..200]}"
       end
     end
