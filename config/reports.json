@@ -1,5 +1,11 @@
 {
     "NewRelic::ErrorRateMartinus": {
         "frequency": "5minutes"
+    },
+    "NewRelic::ErrorRateAdmin": {
+        "frequency": "5minutes"
+    },
+    "NewRelic::ErrorRateBackgroundJobs": {
+        "frequency": "5minutes"
     }
 }
