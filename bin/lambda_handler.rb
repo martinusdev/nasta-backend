@@ -1,5 +1,4 @@
 $LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
-$LOAD_PATH.unshift('/opt/ruby/gems/2.7.0')
 
 require 'nasta/reports'
 require 'logger'
@@ -7,8 +6,6 @@ require 'nasta/model/reports'
 require 'lib/nasta/scheduler'
 
 def lambda_handler(event:, context:)
-  puts event
-
   if event['Records']
     run_report event
   elsif event['frequency']
