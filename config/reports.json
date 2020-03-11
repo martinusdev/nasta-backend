@@ -10,5 +10,8 @@
     },
     "NewRelic::ResponseTimePda": {
         "frequency": "5minutes"
+    },
+    "NewRelic::ResponseTimeObjEdit": {
+        "frequency": "5minutes"
     }
 }
