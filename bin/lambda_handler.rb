@@ -32,4 +32,5 @@ end
 def schedule(frequency)
   scheduler = Scheduler.new
   scheduler.schedule frequency
+  {statusCode: 200, body: ''}
 end
